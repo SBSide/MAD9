@@ -1,18 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.iveci.mad9.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/binread"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="1"
+        android:text="내부 메모리에 읽기" />
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/binwrite"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="내부 메모리에 쓰기" />
+
+    <Button
+        android:id="@+id/brawread"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="RAW폴더에서 파일 읽기" />
+
+    <Button
+        android:id="@+id/boutread"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="외부 메모리에 읽기" />
+
+    <Button
+        android:id="@+id/boutwrite"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="외부 메모리에 쓰기" />
+
+    <Button
+        android:id="@+id/bcdir"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="디렉터리 생성" />
+
+    <Button
+        android:id="@+id/bldir"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="디렉터리 파일목록" />
+
+    <EditText
+        android:id="@+id/etlist"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

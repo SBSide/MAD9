@@ -1,0 +1,4 @@
+This is raw read test message.
+If you can read this, just ignore it.
+이 글은 RAW읽기 확인 문장입니다.
+문장이 보인다면 무시하셔도 됩니다.
