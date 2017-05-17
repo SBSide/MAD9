@@ -87,7 +87,25 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (bsave.getText().toString().equals("수정")){ //수정버튼
-                    edit();
+                    String path = getExternalPath();
+                    NumberFormat numberFormat = NumberFormat.getNumberInstance();
+                    numberFormat.setMinimumIntegerDigits(2);
+                    int year = datePicker.getYear() >= 100 ?
+                            datePicker.getYear() % 100 : datePicker.getYear();
+                    int month = datePicker.getMonth()+1;
+                    int day = datePicker.getDayOfMonth();
+                    File file = new File(path + "diary/" +
+                            year + "-" +  numberFormat.format(month) + "-" + numberFormat.format(day) + ".memo");
+                    if (editfile != file.getName()){ //날짜가 바뀐경우
+                        File dfile = new File(getExternalPath() + "diary/" + editfile);
+                        dfile.delete();
+                        for (int i = 0; i < list.size(); i++) {
+                            if (list.get(i).equals(editfile)) list.remove(i);
+                        }
+                        editfile = year + "-" +  numberFormat.format(month) + "-" + numberFormat.format(day) + ".memo";
+                        edit();
+                    }
+                    else edit();
                 }
                 else{ //저장버튼
                     try {
