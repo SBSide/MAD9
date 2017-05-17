@@ -33,6 +33,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Main2Activity extends AppCompatActivity {
     LinearLayout l1,l2;
@@ -97,14 +99,14 @@ public class Main2Activity extends AppCompatActivity {
                         int month = datePicker.getMonth()+1;
                         int day = datePicker.getDayOfMonth();
                         File file = new File(path + "diary/" +
-                                year + "-" +  numberFormat.format(month) + "-" + numberFormat.format(day) + ".txt");
+                                year + "-" +  numberFormat.format(month) + "-" + numberFormat.format(day) + ".memo");
                         if (file.exists()){ //저장할 파일명이 이미 존재하는경우
-                            editfile = year + "-" +  numberFormat.format(month) + "-" + numberFormat.format(day) + ".txt";
+                            editfile = year + "-" +  numberFormat.format(month) + "-" + numberFormat.format(day) + ".memo";
                             load();
                         }
                         else{  //없는경우 새로저장
                             BufferedWriter bw = new BufferedWriter(new FileWriter(path + "diary/" +
-                                    year + "-" +  numberFormat.format(month) + "-" + numberFormat.format(day) + ".txt"));
+                                    year + "-" +  numberFormat.format(month) + "-" + numberFormat.format(day) + ".memo"));
                             bw.write(editText.getText().toString());
                             bw.close();
                             Toast.makeText(getApplicationContext(),"저장완료",Toast.LENGTH_SHORT).show();
@@ -227,7 +229,15 @@ public class Main2Activity extends AppCompatActivity {
             if (!str.contains(f.getName())) str.add(f.getName());
         }
         tvc.setText("등록된 메모 개수: " + list.size());
+        Collections.sort(str,cmpAsc);
     }
+
+    Comparator<String> cmpAsc = new Comparator<String>(){
+        @Override
+        public int compare(String o1, String o2) {
+            return o1.compareTo(o2);
+        }
+    };
 
     public void onClick(View v){
         l1.setVisibility(View.INVISIBLE);
